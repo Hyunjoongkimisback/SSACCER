@@ -200,6 +200,8 @@ VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2
 insert into videos (youtubeId, title, url, channelName)
 VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "https://www.youtube.com/embed/gMaB-fG4u4g", "ThankyouBUBU");
 
+insert into reviews (userSeq, videoSeq, title, content, createdDate)
+values (6, 6, "재밌어요", "감명받았어요", now());
 
 -- select --
 
