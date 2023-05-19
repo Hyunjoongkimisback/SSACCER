@@ -2,14 +2,22 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "../router";
+import createVuexPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  plugins: [
+    createVuexPersistedState({
+      whiteList: ["DBvideoList"],
+      storage: window.sessionStorage
+    })
+  ],
   state: {
-    videos: [],
+    videoList: [],
     video: null,
-    userList: [],
+    DBvideoList: [],
+    userList: []
     loginUserName: null,
   },
   getters: {},
@@ -20,11 +28,17 @@ export default new Vuex.Store({
     SIGNUP(state, user) {
       state.userList.push(user);
     },
-    SEARCH_YOUTUBE(state, videos) {
-      state.videos = videos;
+    SEARCH_YOUTUBE(state, videoList) {
+      state.videoList = videoList;
     },
     CLICK_VIDEO(state, video) {
       state.video = video;
+    },
+    GET_VIDEOLIST(state, dbvideolist) {
+      state.DBvideoList = dbvideolist;
+    },
+    SET_VIDEO(state, video) {
+      state.DBvideoList.push(video);
     },
     LOGOUT(state) {
       state.loginUserName = null;
@@ -98,6 +112,38 @@ export default new Vuex.Store({
     clickVideo({ commit }, video) {
       commit("CLICK_VIDEO", video);
     },
+    getVideoList({ commit }) {
+      const API_URL = "http://localhost:9999/video/read/list";
+
+      axios({
+        url: API_URL,
+        method: "GET"
+      })
+        .then(response => {
+          console.log(response.data);
+          commit("GET_VIDEOLIST", response.data);
+          console.log(this.state.DBvideoList);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    saveVideo({ commit }, video) {
+      const API_URL = "http://localhost:9999/video/regist";
+
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: video
+      })
+        .then(() => {
+          commit("SET_VIDEO", video);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    getReviewList() {}
   },
   modules: {},
 });

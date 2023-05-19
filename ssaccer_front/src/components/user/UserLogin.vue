@@ -91,8 +91,8 @@ export default {
       } else {
         this.$store.dispatch("Login", this.user);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

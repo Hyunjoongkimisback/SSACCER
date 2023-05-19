@@ -116,7 +116,7 @@ export default {
       position: "",
       phoneNumber: "",
       img: "",
-      orgimg: "",
+      orgimg: ""
     };
   },
   methods: {
@@ -141,12 +141,12 @@ export default {
         position: this.position,
         phoneNumber: this.phoneNumber,
         img: this.img,
-        orgimg: this.orgimg,
+        orgimg: this.orgimg
       };
 
       this.$store.dispatch("SignUp", user);
-    },
-  },
+    }
+  }
 };
 </script>
 
