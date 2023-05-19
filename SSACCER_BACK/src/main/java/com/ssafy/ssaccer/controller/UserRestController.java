@@ -25,7 +25,7 @@ public class UserRestController {
 	private final JwtUtil jwtUtil;
 
     private final UserService uService;
-
+    
 	@ApiOperation(value = "로그인", notes = "token 없이 로그인 / user 객체를 받음")
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody User user, HttpSession session) {
