@@ -128,10 +128,10 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `Videos`;
 CREATE TABLE IF NOT EXISTS `ssaccer`.`Videos` (
   `videoSeq` INT NOT NULL AUTO_INCREMENT,
-  `youtubeId` VARCHAR(50) NOT NULL,
-  `title` VARCHAR(50) NOT NULL,
+  `youtubeId` VARCHAR(100) NOT NULL,
+  `title` VARCHAR(200) NOT NULL,
   `url` VARCHAR(500) NOT NULL,
-  `channelName` VARCHAR(50) NOT NULL,
+  `channelName` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`videoSeq`),
   UNIQUE INDEX `videoSeq_UNIQUE` (`videoSeq` ASC) VISIBLE,
   UNIQUE INDEX `youtubeId_UNIQUE` (`youtubeId` ASC) VISIBLE,
