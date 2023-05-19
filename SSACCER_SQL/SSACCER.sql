@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Users` (
   `password` VARCHAR(30) NOT NULL,
   `name` VARCHAR(20) NOT NULL,
   `nickname` VARCHAR(20) NOT NULL,
-  `role` VARCHAR(10) NOT NULL,
+  `role` VARCHAR(10) NOT NULL DEFAULT 'UNRANKED',
   `position` VARCHAR(10) NOT NULL,
   `phoneNumber` VARCHAR(50) NOT NULL,
   `img` VARCHAR(500) NULL DEFAULT NULL,
@@ -192,6 +192,16 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- insert --
+insert into users (userId, password, name, nickname, role, position, phoneNumber, img, orgimg)
+VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2208", "img", "orimg");
+
+insert into videos (youtubeId, title, url, channelName)
+VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "https://www.youtube.com/embed/gMaB-fG4u4g", "ThankyouBUBU");
+
+
+-- select --
 
 select * from videos;
 select * from users;
