@@ -217,7 +217,7 @@ values (1, 1, "재밌어요", "감명받았어요", "박세윤", now());
 select * from videos;
 select * from users;
 select * from reviews;
-select * from rlikes;
+select * from rlikes;	
 select * from articles;
 select * from teams;
 select * from soccerfields;
