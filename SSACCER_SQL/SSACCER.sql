@@ -9,7 +9,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema ssaccer
 -- -----------------------------------------------------
 DROP SCHEMA IF EXISTS `ssaccer`;
-CREATE SCHEMA IF NOT EXISTS `ssaccer` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `ssaccer` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ;
 USE `ssaccer` ;
 
 -- -----------------------------------------------------
@@ -32,8 +32,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Users` (
   UNIQUE INDEX `id_UNIQUE` (`userId` ASC) VISIBLE,
   UNIQUE INDEX `phoneNumber_UNIQUE` (`phoneNumber` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -67,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Articles` (
     FOREIGN KEY (`userSeq`)
     REFERENCES `ssaccer`.`Users` (`userSeq`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -82,7 +84,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`SoccerFields` (
   `grass` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`fieldSeq`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -97,7 +100,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`XYPoints` (
   `y` INT NOT NULL,
   PRIMARY KEY (`pointSeq`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -119,7 +123,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Teams` (
     FOREIGN KEY (`userSeq`)
     REFERENCES `ssaccer`.`Users` (`userSeq`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -137,8 +142,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Videos` (
   UNIQUE INDEX `youtubeId_UNIQUE` (`youtubeId` ASC) VISIBLE,
   UNIQUE INDEX `url_UNIQUE` (`url` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -165,8 +171,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Reviews` (
     FOREIGN KEY (`videoSeq`)
     REFERENCES `ssaccer`.`Videos` (`videoSeq`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 4
-DEFAULT CHARACTER SET = utf8;
+AUTO_INCREMENT = 1
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
@@ -187,7 +194,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`RLikes` (
     FOREIGN KEY (`reviewSeq`)
     REFERENCES `ssaccer`.`Reviews` (`reviewSeq`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -202,7 +210,7 @@ insert into videos (youtubeId, title, url, channelName)
 VALUES ("gMaB-fG4u4g", "전신 다이어트 최고의 운동 [칼소폭 찐 핵핵매운맛]", "https://www.youtube.com/embed/gMaB-fG4u4g", "ThankyouBUBU");
 
 insert into reviews (userSeq, videoSeq, title, content, writer, createdDate)
-values (6, 6, "재밌어요", "감명받았어요", "박세윤", now());
+values (1, 1, "재밌어요", "감명받았어요", "박세윤", now());
 
 -- select --
 
