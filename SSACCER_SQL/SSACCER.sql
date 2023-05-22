@@ -209,7 +209,7 @@ insert into users (userId, password, name, nickname, role, position, phoneNumber
 VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2208", "img", "orimg");
 
 create table `soccerxy` 
-select p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
+select p.first as pf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
 from xypoints as p, soccerfields as s
 where p.second = s.second
 group by ps;
