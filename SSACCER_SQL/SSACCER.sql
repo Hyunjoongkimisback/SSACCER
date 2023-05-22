@@ -78,6 +78,7 @@ COLLATE utf8mb4_general_ci;
 -- DROP TABLE IF EXISTS `SoccerFields`;
 CREATE TABLE IF NOT EXISTS `ssaccer`.`SoccerFields` (
   `fieldSeq` INT NOT NULL AUTO_INCREMENT,
+  `first` VARCHAR(45) NULL DEFAULT NULL,
   `second` VARCHAR(45) NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `owner` VARCHAR(45) NULL DEFAULT NULL,
@@ -199,6 +200,20 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE utf8mb4_general_ci;
 
+-- -----------------------------------------------------
+-- Table `ssaccer`.`regioncodes`
+-- -----------------------------------------------------
+-- DROP TABLE IF EXISTS `regioncodes`;
+CREATE TABLE IF NOT EXISTS `ssaccer`.`regioncodes` (
+  `regioncodeSeq` INT NOT NULL AUTO_INCREMENT,
+  `region` VARCHAR(45) NOT NULL,
+  `code` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`regioncodeSeq`),
+  UNIQUE INDEX `regioncodeSeq_UNIQUE` (`regioncodeSeq` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -208,10 +223,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 insert into users (userId, password, name, nickname, role, position, phoneNumber, img, orgimg)
 VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2208", "img", "orimg");
 
+drop table  if exists `soccerxy`;
+
 create table `soccerxy` 
-select p.first as pf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
+select p.first as pf, s.first as sf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
 from xypoints as p, soccerfields as s
-where p.second = s.second
+where p.first like concat('%', s.first, '%') OR p.second like concat('%', s.second, '%')
+-- where p.second = s.second
 group by ps;
 -- where p.second like s.second || '%';
 
@@ -223,7 +241,10 @@ select * from reviews;
 select * from rlikes;	
 select * from articles;
 select * from teams;
+
 select * from soccerfields;
 select * from xypoints;
 select * from soccerxy;
+
+select * from regioncodes;
 
