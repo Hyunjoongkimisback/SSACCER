@@ -8,6 +8,12 @@
           href="/"
           class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
         >
+          <img
+            src="@/assets/logo2.png"
+            alt="Logo"
+            width="130px"
+            height="40px"
+          />
           <svg
             class="bi me-2"
             width="40"
@@ -30,6 +36,7 @@
           </li>
           <li>
             <a @click="goWeatherView" class="nav-link px-2 text-white">날씨</a>
+            >>>>>>> main
           </li>
         </ul>
 
@@ -62,7 +69,7 @@ import { mapState } from "vuex";
 export default {
   name: "MainHeader",
   computed: {
-    ...mapState(["loginUserName", "loginUser"])
+    ...mapState(["loginUserName", "loginUser"]),
   },
   methods: {
     GoUserLogin() {
@@ -85,6 +92,7 @@ export default {
         this.$router.push("/articlelist");
       }
     },
+
     logout() {
       this.$store.dispatch("logout");
     },
@@ -93,12 +101,12 @@ export default {
         this.$router.push("/myPage/" + this.loginUser.userSeq);
       }
     },
-    goWeatherView() {
-      if (this.$route.path !== "/weather") {
-        this.$router.push("/weather");
-      }
-    }
-  }
+    // goWeatherView() {
+    //   if (this.$route.path !== "/weather") {
+    //     this.$router.push("/weather");
+    //   }
+    // },
+  },
 };
 </script>
 
