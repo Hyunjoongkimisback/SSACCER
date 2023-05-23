@@ -191,18 +191,27 @@ export default new Vuex.Store({
     },
     SEARCH_PART_REGION_CODE_LIST(state, regionCodeList) {
       state.partRegionCodeList = regionCodeList;
+
+      console.log("partRegionCodeList : ");
+      console.log(state.partRegionCodeList);
     },
     GET_LONG_TEMPERATURE(state, longtemperatureInfo) {
       state.longTemperature = longtemperatureInfo;
+      console.log("longTemperature : ");
+      console.log(state.longTemperature);
     },
     GET_BIG_REGION_CODE_LIST(state, bigRegionCodeList) {
       state.allBigRegionCodeList = bigRegionCodeList;
     },
     SEARCH_PART_BIG_REGION_CODE_LIST(state, bigRegionCodeList) {
       state.partBigRegionCodeList = bigRegionCodeList;
+      console.log("partBigRegionCodeList : ");
+      console.log(state.partBigRegionCodeList);
     },
     GET_LONG_WEATHER(state, longtemperatureInfo) {
       state.longWeather = longtemperatureInfo;
+      console.log("longWeather : ");
+      console.log(state.longWeather);
     },
 
     // mutation - article
