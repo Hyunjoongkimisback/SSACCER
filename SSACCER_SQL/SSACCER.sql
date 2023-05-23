@@ -47,17 +47,16 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Articles` (
   `title` VARCHAR(100) NOT NULL,
   `content` VARCHAR(5000) NOT NULL,
   `viewCnt` INT NOT NULL DEFAULT '0',
-  `weather` VARCHAR(50) NOT NULL,
   `recruiteMax` INT NOT NULL,
   `place` VARCHAR(300) NOT NULL,
   `cost` INT NOT NULL DEFAULT '0',
   `ability` VARCHAR(50) NOT NULL,
   `status` VARCHAR(50) NOT NULL,
   `gender` VARCHAR(50) NOT NULL,
-  `shower` VARCHAR(50) NOT NULL,
-  `parking` VARCHAR(50) NOT NULL,
-  `beverage` VARCHAR(50) NOT NULL,
-  `rental` VARCHAR(50) NOT NULL,
+   `shower` TINYINT(1) NOT NULL,
+  `parking` TINYINT(1) NOT NULL,
+  `beverage` TINYINT(1) NOT NULL,
+  `rental` TINYINT(1) NOT NULL,
   `createdDate` TIMESTAMP NOT NULL,
   `matchstartdate` TIMESTAMP NOT NULL,
   `matchenddate` TIMESTAMP NOT NULL,
@@ -214,6 +213,19 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE utf8mb4_general_ci;
 
+-- -----------------------------------------------------
+-- Table `ssaccer`.`bigregioncodes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ssaccer`.`bigregioncodes` (
+  `bigregioncodeSeq` INT NOT NULL AUTO_INCREMENT,
+  `bigregion` VARCHAR(45) NOT NULL,
+  `bigcode` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`bigregioncodeSeq`),
+  UNIQUE INDEX `bigregioncodeSeq_UNIQUE` (`bigregioncodeSeq` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE utf8mb4_general_ci;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -223,15 +235,13 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 insert into users (userId, password, name, nickname, role, position, phoneNumber, img, orgimg)
 VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2208", "img", "orimg");
 
-drop table  if exists `soccerxy`;
+-- drop table  if exists `soccerxy`;
 
-create table `soccerxy` 
+create table if not exists `soccerxy` 
 select p.first as pf, s.first as sf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
 from xypoints as p, soccerfields as s
 where p.first like concat('%', s.first, '%') OR p.second like concat('%', s.second, '%')
--- where p.second = s.second
 group by ps;
--- where p.second like s.second || '%';
 
 -- drop table `soccerxy`; 
 
@@ -247,4 +257,5 @@ select * from xypoints;
 select * from soccerxy;
 
 select * from regioncodes;
+select * from bigregioncodes;
 
