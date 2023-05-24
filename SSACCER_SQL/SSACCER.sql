@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Articles` (
   `title` VARCHAR(100) NOT NULL,
   `content` VARCHAR(5000) NOT NULL,
   `viewCnt` INT NOT NULL DEFAULT '0',
+  `recruiteCnt` INT NOT NULL,
   `recruiteMax` INT NOT NULL,
   `recruiteCnt` INT NOT NULL,
   `place` VARCHAR(300) NOT NULL,
