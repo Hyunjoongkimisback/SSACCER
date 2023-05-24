@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Articles` (
   `content` VARCHAR(5000) NOT NULL,
   `viewCnt` INT NOT NULL DEFAULT '0',
   `recruiteMax` INT NOT NULL,
+  `recruiteCnt` INT NOT NULL,
   `place` VARCHAR(300) NOT NULL,
   `cost` INT NOT NULL DEFAULT '0',
   `ability` VARCHAR(50) NOT NULL,
@@ -99,6 +100,8 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`XYPoints` (
   `third` VARCHAR(45) NULL DEFAULT NULL,
   `x` INT NOT NULL,
   `y` INT NOT NULL,
+  `longitude` DOUBLE NOT NULL,
+  `latitude` DOUBLE NOT NULL,
   PRIMARY KEY (`pointSeq`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -238,7 +241,7 @@ VALUES("ssafy", "1234", "박세윤", "Yun", "ADMIN", "올라운더", "010-5183-2
 -- drop table  if exists `soccerxy`;
 
 create table if not exists `soccerxy` 
-select p.first as pf, s.first as sf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year
+select p.first as pf, s.first as sf, p.second as ps, s.second as ss, p.x as x, p.y as y, s.name as name, s.year as year, p.longitude as longitude, p.latitude as latitude
 from xypoints as p, soccerfields as s
 where p.first like concat('%', s.first, '%') OR p.second like concat('%', s.second, '%')
 group by ps;
