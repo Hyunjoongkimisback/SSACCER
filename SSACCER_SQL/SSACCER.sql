@@ -66,7 +66,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Articles` (
   INDEX `fk_Articles_userSeq_idx` (`userSeq` ASC) VISIBLE,
   CONSTRAINT `fk_Articles_userSeq`
     FOREIGN KEY (`userSeq`)
-    REFERENCES `ssaccer`.`Users` (`userSeq`))
+    REFERENCES `ssaccer`.`Users` (`userSeq`)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE utf8mb4_general_ci;
@@ -75,7 +77,7 @@ COLLATE utf8mb4_general_ci;
 -- -----------------------------------------------------
 -- Table `ssaccer`.`SoccerFields`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `SoccerFields`;
+DROP TABLE IF EXISTS `SoccerFields`;
 CREATE TABLE IF NOT EXISTS `ssaccer`.`SoccerFields` (
   `fieldSeq` INT NOT NULL AUTO_INCREMENT,
   `first` VARCHAR(45) NULL DEFAULT NULL,
@@ -92,7 +94,7 @@ COLLATE utf8mb4_general_ci;
 -- -----------------------------------------------------
 -- Table `ssaccer`.`XYPoints`
 -- -----------------------------------------------------
---  DROP TABLE IF EXISTS `XYPoints`; 
+DROP TABLE IF EXISTS `XYPoints`; 
 CREATE TABLE IF NOT EXISTS `ssaccer`.`XYPoints` (
   `pointSeq` INT NOT NULL AUTO_INCREMENT,
   `first` VARCHAR(45)  NULL,
@@ -125,7 +127,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Teams` (
     REFERENCES `ssaccer`.`articles` (`articleSeq`),
   CONSTRAINT `fk_Teams_userSeq`
     FOREIGN KEY (`userSeq`)
-    REFERENCES `ssaccer`.`Users` (`userSeq`))
+    REFERENCES `ssaccer`.`Users` (`userSeq`)
+	ON UPDATE CASCADE
+    ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE utf8mb4_general_ci;
@@ -171,7 +175,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`Reviews` (
   INDEX `fk_videoreviews_videoSeq_idx` (`videoSeq` ASC) VISIBLE,
   CONSTRAINT `fk_Reviews_userSeq`
     FOREIGN KEY (`userSeq`)
-    REFERENCES `ssaccer`.`Users` (`userSeq`),
+    REFERENCES `ssaccer`.`Users` (`userSeq`)
+	ON UPDATE CASCADE
+    ON DELETE CASCADE,
   CONSTRAINT `fk_Reviews_videoSeq`
     FOREIGN KEY (`videoSeq`)
     REFERENCES `ssaccer`.`Videos` (`videoSeq`))
@@ -194,7 +200,9 @@ CREATE TABLE IF NOT EXISTS `ssaccer`.`RLikes` (
   INDEX `fk_reviewlikes_videoreviewSeq_idx` (`reviewSeq` ASC) VISIBLE,
   CONSTRAINT `fk_RLikes_userSeq`
     FOREIGN KEY (`userSeq`)
-    REFERENCES `ssaccer`.`Users` (`userSeq`),
+    REFERENCES `ssaccer`.`Users` (`userSeq`)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   CONSTRAINT `fk_RLikes_reviewSeq`
     FOREIGN KEY (`reviewSeq`)
     REFERENCES `ssaccer`.`Reviews` (`reviewSeq`))
@@ -205,7 +213,7 @@ COLLATE utf8mb4_general_ci;
 -- -----------------------------------------------------
 -- Table `ssaccer`.`regioncodes`
 -- -----------------------------------------------------
--- DROP TABLE IF EXISTS `regioncodes`;
+DROP TABLE IF EXISTS `regioncodes`;
 CREATE TABLE IF NOT EXISTS `ssaccer`.`regioncodes` (
   `regioncodeSeq` INT NOT NULL AUTO_INCREMENT,
   `region` VARCHAR(45) NOT NULL,
@@ -262,3 +270,4 @@ select * from soccerxy;
 select * from regioncodes;
 select * from bigregioncodes;
 
+select * from soccerxy where name like "한강공원%";
