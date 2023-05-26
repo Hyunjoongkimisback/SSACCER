@@ -78,9 +78,9 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>축구 소식</h1>
-              <p>실시간 주요 뉴스를 확인하세요.</p>
+              <p>해외의 주요 축구 뉴스와 결과들을 확인하세요.</p>
               <p>
-                <router-link to="/news" class="btn btn-lg btn-primary"
+                <router-link to="/news/main" class="btn btn-lg btn-primary"
                   >바로가기</router-link
                 >
               </p>
@@ -169,21 +169,12 @@
           aria-label="Placeholder"
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
-        >
-          <!-- <image
-            href="https://static.thenounproject.com/png/5734458-200.png"
-            width="100%"
-            height="100%"
-            alt="..."
-          /> -->
-          <!-- <title>Placeholder</title> -->
-          <!-- <rect width="100%" height="100%" fill="var(--bs-secondary-color)" /> -->
-        </svg>
+        ></svg>
         <h2 style="opacity: 0" class="fw-normal">Match</h2>
         <p style="opacity: 0">우리 동네 주변 팀 매칭 게시판</p>
         <p>
           <a class="btn btn-warning" @click="goArticleView"
-            >매칭하러가기 &raquo;</a
+            >매칭 하러가기 &raquo;</a
           >
         </p>
       </div>
@@ -204,16 +195,7 @@
           aria-label="Placeholder"
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
-        >
-          <!-- <image
-            href="https://cdn0.iconfinder.com/data/icons/interface-line-4/48/news_text_article-256.png"
-            width="100%"
-            height="100%"
-            alt="..."
-          />
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-color)" /> -->
-        </svg>
+        ></svg>
         <h2 class="fw-normal" style="opacity: 0">News</h2>
         <p style="opacity: 0">국내, 해외 축구 소식 보기</p>
         <p>
@@ -222,7 +204,6 @@
           >
         </p>
       </div>
-      <!-- /.col-lg-4 -->
       <div
         class="col-lg-4"
         style="
@@ -239,25 +220,15 @@
           aria-label="Placeholder"
           preserveAspectRatio="xMidYMid slice"
           focusable="false"
-        >
-          <!-- <image
-            href="https://cdn1.iconfinder.com/data/icons/social-media-outline-6/128/SocialMedia_Youtube-Outline-256.png"
-            width="100%"
-            height="100%"
-            alt="..."
-          />
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-color)" /> -->
-        </svg>
+        ></svg>
         <h2 class="fw-normal" style="opacity: 0">Youtube</h2>
         <p style="opacity: 0">축구 영상 시청</p>
         <p>
           <a class="btn btn-warning" @click="goVideoView"
-            >View details &raquo;</a
+            >축구 영상 보러가기 &raquo;</a
           >
         </p>
       </div>
-      <!-- /.col-lg-4 -->
     </div>
   </main>
 </template>
@@ -274,8 +245,8 @@ export default {
     },
     goNewsView() {
       this.$router.push("/news/main");
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -286,63 +257,35 @@ body {
   color: rgb(var(--bs-tertiary-color-rgb));
 }
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
-/* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
 }
 
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   bottom: 3rem;
   z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
 }
-
-/* MARKETING CONTENT
--------------------------------------------------- */
-
-/* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
 }
-
-/* rtl:begin:ignore */
 .marketing .col-lg-4 p {
   margin-right: 0.75rem;
   margin-left: 0.75rem;
 }
 
-/* rtl:end:ignore */
-
-/* Featurettes
-------------------------- */
-
 .featurette-divider {
   margin: 5rem 0;
-  /* Space out the Bootstrap <hr> more */
 }
-
-/* Thin out the marketing headings */
-/* rtl:begin:remove */
 .featurette-heading {
   letter-spacing: -0.05rem;
 }
 
-/* rtl:end:remove */
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-
 @media (min-width: 40em) {
-  /* Bump up size of carousel content */
   .carousel-caption p {
     margin-bottom: 1.25rem;
     font-size: 1.25rem;

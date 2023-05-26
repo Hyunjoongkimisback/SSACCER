@@ -2,7 +2,7 @@
   <div class="container-sm">
     <div class="box" style="justify-content: center">
       <div>
-        <label for="league">리그</label>
+        <label for="league" style="margin: 30px">리그</label>
         <select
           v-model="league"
           @click="loadingOn"
@@ -111,7 +111,7 @@ import { mapState } from "vuex";
 export default {
   name: "TopScorerInTeam",
   computed: {
-    ...mapState(["topScorer"]),
+    ...mapState(["topScorer"])
   },
   data() {
     return {
