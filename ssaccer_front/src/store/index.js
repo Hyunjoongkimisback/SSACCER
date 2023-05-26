@@ -122,20 +122,6 @@ export default new Vuex.Store({
           break;
         }
       }
-
-      for (let i = 0; i < state.userList.length; i++) {
-        if (state.userList[i].userSeq == state.loginUser.userSeq) {
-          state.userList[i].role = role;
-          break;
-        }
-      }
-
-      for (let i = 0; i < state.DBuserList.length; i++) {
-        if (state.DBuserList[i].userSeq == state.loginUser.userSeq) {
-          state.DBuserList[i].role = role;
-          break;
-        }
-      }
     },
 
     // mutation - video
@@ -435,7 +421,8 @@ export default new Vuex.Store({
         })
         .then(() => {
           commit("UPLOAD_IMAGE", img);
-
+          console.log(img);
+          console.log(imgUrl);
           router.go(0);
         })
         .catch(err => {
@@ -499,7 +486,7 @@ export default new Vuex.Store({
 
       user.role = role;
 
-      const API_URL = `http://localhost:9999/user/update`;
+      const API_URL = `http://localhost:9999/review/update`;
 
       axios({
         url: API_URL,
@@ -511,8 +498,6 @@ export default new Vuex.Store({
       })
         .then(() => {
           this.dispatch("getUserList");
-        })
-        .then(() => {
           commit("UPDATE_ROLE", role);
         })
         .catch(err => {
@@ -705,6 +690,7 @@ export default new Vuex.Store({
           }).then(() => {
             commit("DELETE_REVIEW", reviewSeq);
           });
+          commit("DELETE_REVIEW", reviewSeq);
         })
         .catch(err => {
           console.log(err);
